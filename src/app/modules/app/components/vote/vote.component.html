@@ -1,14 +1,31 @@
-<div class="div-vote-component">
+<div>
     <!-- vote up -->
-    <button class="hand btn-vote-up" (click)="setAction(true)" [ngClass]="action == 'thumbsUp' ? 'btn-vote-active': ''">
-        <img class="img-thumbs-up" src="../../../../../assets/img/thumbs-up.svg">
+    <button
+        *ngIf="isButtonEnabled"
+        class="hand btn-vote-up"
+        (click)="setAction(true)"
+        [ngClass]="action == 'thumbsUp' ? 'btn-vote-active': ''">
+        <!-- image up -->
+        <img class="img-thumbs-up"
+             src="../../../../../assets/img/thumbs-up.svg">
     </button>
     <!-- vote down -->
-    <button class="hand btn-vote-down" (click)="setAction(false)" [ngClass]="action == 'thumbsDown' ? 'btn-vote-active': ''">
-        <img class="img-thumbs-up" src="../../../../../assets/img/thumbs-down.svg">
+    <button *ngIf="isButtonEnabled"
+        class="hand btn-vote-down"
+        (click)="setAction(false)"
+        [ngClass]="action == 'thumbsDown' ? 'btn-vote-active': ''">
+        <!-- image down -->
+        <img class="img-thumbs-up"
+            src="../../../../../assets/img/thumbs-down.svg">
     </button>
     <!-- vote now -->
-    <button class="btn-vote-now" [ngClass]="action ? 'btn-vote-now-active hand': ''">
-        <a class="a-vote-now">{{actionText}}</a>
+    <button class="btn-vote-now"
+            [disabled]="!isActionEnable()"
+            [ngClass]="isActionEnable() ? 'btn-vote-now-active hand': ''"
+            (click)="choseVoteOption()">
+        <!-- action text -->
+        <a class="a-vote-now">
+            {{actionText}}
+        </a>
     </button>
 </div>

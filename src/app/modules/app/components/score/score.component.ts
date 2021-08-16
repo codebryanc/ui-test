@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { ICelebrityMap } from 'src/app/models/celebrityInterface';
+import { CelebrityService } from 'src/app/services/celebrity.service';
 
 import { ToolsService } from 'src/app/services/tools.service';
+
+const TOTAL_VOTES_DONT_SHOW_CHANGES: number = 500;
 
 @Component({
   selector: 'app-score',
@@ -21,7 +24,8 @@ export class ScoreComponent implements OnInit {
   public scoreUp: string;
   public scoreDown: string;
 
-  constructor(private _toolsService: ToolsService) {}
+  constructor(private _toolsService: ToolsService,
+    private _celebrityService: CelebrityService) {}
 
   ngOnInit(): void {
     this.initCompoent();
@@ -29,16 +33,30 @@ export class ScoreComponent implements OnInit {
 
   // Methods
   initCompoent() : void {
+    this.evaluateScoreForThisCelebrity();
+
+    // subscribe to changes
+    this.refreshScoreSubscribe();
+  }
+    
+  evaluateScoreForThisCelebrity() : void {
     this._totalVotes = this.celebrity.votes.negative + this.celebrity.votes.positive;
 
     this.setMainScore();
     this.getPercentScore();
   }
-    
+
   getPercentScore() : void {
     if(this.celebrity && this.celebrity.votes) {
-      this.scoreUp = this._toolsService.getPercentByVotes(this.celebrity.votes.positive, this._totalVotes).toFixed(1);
-      this.scoreDown = this._toolsService.getPercentByVotes(this.celebrity.votes.negative, this._totalVotes).toFixed(1);
+      let decimals = 1;
+
+      // Business logic, if total votes its upper than 500, in the score don't it's possible view any change!
+      if(this._totalVotes > TOTAL_VOTES_DONT_SHOW_CHANGES) {
+        decimals = 2;
+      }
+
+      this.scoreUp = this._toolsService.getPercentByVotes(this.celebrity.votes.positive, this._totalVotes).toFixed(decimals);
+      this.scoreDown = this._toolsService.getPercentByVotes(this.celebrity.votes.negative, this._totalVotes).toFixed(decimals);
     }
   }
 
@@ -62,5 +80,16 @@ export class ScoreComponent implements OnInit {
       }
     }
     return result;
+  }
+
+  // Subscribe
+  refreshScoreSubscribe() {
+    // Score has changed!
+    this._celebrityService.refreshScore.subscribe(id => {
+      if(this.celebrity.id === id) {
+        this.celebrity = this._celebrityService.getCelebrityById(this.celebrity.id);
+        this.evaluateScoreForThisCelebrity();
+      }
+    });
   }
 }

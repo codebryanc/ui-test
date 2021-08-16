@@ -54,6 +54,9 @@ export class ToolsService {
             else if(timeForEvaluate > SECONDS) {
                 result = `${Math.round(timeForEvaluate / SECONDS)} seconds ago`;
             }
+            else if(timeForEvaluate <= SECONDS) {
+                result = `Wow really fast, moment ago`;
+            }
         }
 
         return result;
