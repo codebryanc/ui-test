@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+// DATE
+
 const SECONDS: number = 1000;
 const MINUTES: number = 60 * SECONDS;
 const HOURS: number = 60 * MINUTES;
@@ -7,14 +9,15 @@ const DAYS: number = 24 * HOURS;
 const MONTHS: number = 30 * DAYS;
 const YEARS: number = 12 * MONTHS;
 
+// MATH
+const ALL_PERCENT: number = 100;
+
 @Injectable({
   providedIn: 'root'
 })
 export class ToolsService {
     
-    constructor() {
-    
-    }
+    constructor() {}
 
     // Functions
     getDateMessageForEyebrowText(datetime: Date) : string {
@@ -51,6 +54,17 @@ export class ToolsService {
             else if(timeForEvaluate > SECONDS) {
                 result = `${Math.round(timeForEvaluate / SECONDS)} seconds ago`;
             }
+        }
+
+        return result;
+    }
+
+    getSizeArea(votes: number, totalVotes: number, area: number): number {
+        let result = 0;
+
+        if(votes && totalVotes && area) {
+            let percent = votes * ALL_PERCENT / totalVotes;
+            result = area * percent / ALL_PERCENT;
         }
 
         return result;

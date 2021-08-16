@@ -20,7 +20,7 @@
         </a>
     </div>
     <!-- score -->
-    <app-score></app-score>
+    <app-score [rectangleHeight]="rectangleHeight" [celebrity]="celebrity"></app-score>
     <!-- banner__background -->
-    <div class="div-rectangle"></div>
+    <div class="div-rectangle" [ngStyle]="{'height':getHeightRectangle()}"></div>
 </div>

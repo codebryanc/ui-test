@@ -1,3 +1,4 @@
-<div class="div-score-container">
-    <div class="div-score"></div>
+<div class="div-score-container display-flex">
+    <div class="div-score-up" [ngStyle]="{'width':getSizeArea(false)}"></div>
+    <div class="div-score-down" [ngStyle]="{'width':getSizeArea(true)}"></div>
 </div>

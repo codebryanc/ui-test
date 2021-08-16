@@ -4,7 +4,12 @@
     top: 116px;
 }
 
-.div-score {
+.div-score-down {
     height: 54px;
-    background: rgba(249, 173, 29, 0.6);
+    background: #F9AD1D99;
+}
+
+.div-score-up {
+    height: 54px;
+    background: #3CBBB499;
 }

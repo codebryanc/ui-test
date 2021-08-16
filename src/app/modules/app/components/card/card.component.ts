@@ -10,6 +10,8 @@ import { ToolsService } from 'src/app/services/tools.service';
 })
 export class CardComponent implements OnInit {
 
+  public rectangleHeight: number = 1100;
+
   // Component data
   @Input() celebrity: ICelebrityMap;
 
@@ -25,5 +27,10 @@ export class CardComponent implements OnInit {
     if(this.celebrity) {
       this.celebrity.lastUpdatedMessage = this._toolsService.getDateMessageForEyebrowText(this.celebrity.lastUpdated);
     }
+  }
+
+  // Function
+  getHeightRectangle() : string {
+    return `${this.rectangleHeight}px`;
   }
 }
