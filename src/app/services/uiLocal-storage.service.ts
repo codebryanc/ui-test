@@ -2,21 +2,21 @@ import { Injectable } from '@angular/core';
 
 import { Data } from '@angular/router';
 
-import { SessionStorageService } from 'angular-web-storage';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UiLocalStorageService {
     
-    constructor(private _sessionStorageService: SessionStorageService) {
+    constructor(private _localStorageService: LocalStorageService) {
     }
 
     // Methods
 
         // :: Get ::
         public getDataInLocalStorage(key: string) : any {
-            let localData = this._sessionStorageService.get(key);
+            let localData = this._localStorageService.get(key);
 
             if(localData) {
                 return JSON.parse(localData);
@@ -32,7 +32,7 @@ export class UiLocalStorageService {
 
             let info = JSON.stringify(data);
             if(info) {
-                this._sessionStorageService.set(key, info);
+                this._localStorageService.set(key, info);
                 result = true;
             }
 
