@@ -1,0 +1,10 @@
+ <!-- title -->
+ <a class="a-title">
+    Previous Rulings
+</a>
+<!-- select grid view or list view -->
+<div class="float-right">
+    <select class="select-view" [ngModel]="selectedView" (ngModelChange)="onChangeMenu($event)" name="changeView">
+        <option [value]="i" *ngFor="let i of views">{{i}}</option>
+    </select>
+</div>
