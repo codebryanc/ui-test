@@ -1,1 +1,16 @@
-{{celebrities}}
+<div class="app-main-component">
+    <!-- title -->
+    <a class="a-title">
+        Previous Rulings
+    </a>
+    <!-- select grid view or list view -->
+    
+    <!-- cards -->
+    <div class="div-celebrities" *ngIf="celebrities">
+        <!-- each -->
+        <div *ngFor="let famous of celebrities">
+            <!-- card -->
+            <app-card [celebrity]="famous"></app-card>
+        </div>
+    </div>
+</div>
