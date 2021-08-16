@@ -59,11 +59,15 @@ export class ToolsService {
         return result;
     }
 
+    getPercentByVotes(votes: number, totalVotes: number): number {
+        return  votes * ALL_PERCENT / totalVotes;
+    }
+
     getSizeArea(votes: number, totalVotes: number, area: number): number {
         let result = 0;
 
         if(votes && totalVotes && area) {
-            let percent = votes * ALL_PERCENT / totalVotes;
+            let percent = this.getPercentByVotes(votes, totalVotes);
             result = area * percent / ALL_PERCENT;
         }
 

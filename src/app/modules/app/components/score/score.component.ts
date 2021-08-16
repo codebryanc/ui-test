@@ -15,13 +15,37 @@ export class ScoreComponent implements OnInit {
   @Input() celebrity: ICelebrityMap;
   @Input() rectangleHeight: number;
 
+  private _totalVotes: number = 0;
+
+  public isUpScore: boolean = true;
+  public scoreUp: string;
+  public scoreDown: string;
+
   constructor(private _toolsService: ToolsService) {}
 
   ngOnInit(): void {
-    console.log(this.rectangleHeight);
+    this.initCompoent();
   }
 
   // Methods
+  initCompoent() : void {
+    this._totalVotes = this.celebrity.votes.negative + this.celebrity.votes.positive;
+
+    this.setMainScore();
+    this.getPercentScore();
+  }
+    
+  getPercentScore() : void {
+    if(this.celebrity && this.celebrity.votes) {
+      this.scoreUp = this._toolsService.getPercentByVotes(this.celebrity.votes.positive, this._totalVotes).toFixed(1);
+      this.scoreDown = this._toolsService.getPercentByVotes(this.celebrity.votes.negative, this._totalVotes).toFixed(1);
+    }
+  }
+
+  setMainScore() : void {
+    // Business logic, if the votes are equal, take positive vote!
+    this.isUpScore = this.celebrity.votes.positive >= this.celebrity.votes.negative;
+  }
 
   // Function
   getSizeArea(isDownArea: boolean): string {

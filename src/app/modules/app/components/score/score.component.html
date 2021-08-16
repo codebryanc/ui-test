@@ -1,4 +1,16 @@
 <div class="div-score-container display-flex">
-    <div class="div-score-up" [ngStyle]="{'width':getSizeArea(false)}"></div>
-    <div class="div-score-down" [ngStyle]="{'width':getSizeArea(true)}"></div>
+    <!-- main score -->
+    <div class="main-score" [ngClass]="isUpScore ? 'color-up': 'color-down'">
+        <img class="img-thumbs" src="../../../../../assets/img/{{isUpScore ? 'thumbs-up': 'thumbs-down' }}.svg">
+    </div>
+    <!-- up -->
+    <div class="div-score div-score-up" [ngStyle]="{'width':getSizeArea(false)}">
+        <img class="img-thumbs-up" src="../../../../../assets/img/thumbs-up.svg">
+        <a class="a-percent-up float-left">{{scoreUp}}%</a>
+    </div>
+    <!-- down -->
+    <div class="div-score div-score-down" [ngStyle]="{'width':getSizeArea(true)}">
+        <img class="img-thumbs-down" src="../../../../../assets/img/thumbs-down.svg">
+        <a class="a-percent-down float-right">{{scoreDown}}%</a>
+    </div>
 </div>
