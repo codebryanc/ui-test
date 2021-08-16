@@ -1,14 +1,14 @@
 <div class="div-vote-component">
     <!-- vote up -->
-    <button class="hand btn-vote-up">
+    <button class="hand btn-vote-up" (click)="setAction(true)" [ngClass]="action == 'thumbsUp' ? 'btn-vote-active': ''">
         <img class="img-thumbs-up" src="../../../../../assets/img/thumbs-up.svg">
     </button>
     <!-- vote down -->
-    <button class="hand btn-vote-down">
+    <button class="hand btn-vote-down" (click)="setAction(false)" [ngClass]="action == 'thumbsDown' ? 'btn-vote-active': ''">
         <img class="img-thumbs-up" src="../../../../../assets/img/thumbs-down.svg">
     </button>
     <!-- vote now -->
-    <button class="hand btn-vote-now">
-        <a class="a-vote-now">{{action}}</a>
+    <button class="btn-vote-now" [ngClass]="action ? 'btn-vote-now-active hand': ''">
+        <a class="a-vote-now">{{actionText}}</a>
     </button>
 </div>
