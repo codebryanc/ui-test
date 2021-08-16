@@ -1,5 +1,12 @@
-.div-main-card {
+.div-card-view {
     width: 100%;
+}
+
+.div-grid-card-view {
+    width: 110%;
+}
+
+.div-main-card {
     height: 170px;
     margin-bottom: 18px;
 }
@@ -70,4 +77,76 @@
     color:white;
     position: absolute;
     right: 0;
+}
+
+/* Grid card */
+.div-grid-card {
+    width: 348px;
+    height: 348px;
+    float: left;
+    margin: 0 27px 27px 0;
+}
+
+.img-celebrity-grid {
+    width: 348px;
+    height: 348px;
+}
+
+.a-celebrity-name-in-grid {
+    position: relative;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    align-items: flex-end;
+    color: #FFFFFF;
+    top: -230px;
+    left: 38px;
+    width: 80%;
+}
+
+.div-celebrity-container-description-grid {
+    width: 276.02px;
+    height: 260px;
+    position: absolute;
+}
+
+.a-celebrity-description-grid {
+    position: relative;
+    left: 38px;
+    width: 100%;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;    
+    color: #FFFFFF;
+    top: -230px;
+    line-height: 21.6px;
+}
+
+.div-celebrity-container-lastupdated-grid {
+    position: relative;
+    top: 8px;
+    right: 14px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: right;
+}
+
+.a-celebrity-lastupdated-grid {
+    position: relative;    
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: #FFFFFF;
+    top: -178px;
+    right: 83px;
 }

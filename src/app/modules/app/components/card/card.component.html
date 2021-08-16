@@ -1,28 +1,56 @@
-<div class="div-main-card">
-    <!-- Celebritie picture -->
-    <img class="img-celebrity-picture" src="../../../../../assets/img/{{celebrity.picture}}">
-    <!-- Celebrity name -->
-    <div>
-        <a class="a-celebrity-name"> 
-            {{celebrity.name}}
-        </a>
+<!-- banner cards -->
+<div class="div-card-view">
+    <div *ngIf="currentView === cardListView" class="div-main-card">
+        <!-- Celebritie picture -->
+        <img class="img-celebrity-picture" src="../../../../../assets/img/{{celebrity.picture}}">
+        <!-- Celebrity name -->
+        <div>
+            <a class="a-celebrity-name"> 
+                {{celebrity.name}}
+            </a>
+        </div>
+        <!-- Celebrity description -->
+        <div class="div-celebrity-container-description">
+            <a class="a-celebrity-description"> 
+                {{celebrity.description}}
+            </a>
+        </div>
+        <!-- lastUpdated -->
+        <div class="div-celebrity-container-lastupdated">
+            <a class="a-celebrity-lastupdated"> 
+                {{celebrity.lastUpdatedMessage}}
+            </a>
+        </div>
+        <!-- score -->
+        <app-score [rectangleHeight]="rectangleHeight" [celebrity]="celebrity"></app-score>
+        <!-- vote -->
+        <app-vote [celebrity]="celebrity"></app-vote>
+        <!-- banner__background -->
+        <div class="div-rectangle" [ngStyle]="{'height':getHeightRectangle()}"></div>
     </div>
-    <!-- Celebrity description -->
-    <div class="div-celebrity-container-description">
-        <a class="a-celebrity-description"> 
-            {{celebrity.description}}
-        </a>
+</div>
+<!-- grid cards -->
+<div class="div-grid-card-view">
+    <div *ngIf="currentView != cardListView" class="div-grid-card">
+        <!-- Celebritie picture -->
+        <img class="img-celebrity-grid" src="../../../../../assets/img_grid/{{celebrity.picture}}">
+         <!-- Celebrity name -->
+         <div>
+            <a class="a-celebrity-name-in-grid"> 
+                {{substringName(celebrity.name)}}
+            </a>
+        </div>
+        <!-- Celebrity description -->
+        <div class="div-celebrity-container-description-grid">
+            <a class="a-celebrity-description-grid"> 
+                {{substringDescription(celebrity.description)}}
+            </a>
+        </div>
+        <!-- lastUpdated -->
+        <div class="div-celebrity-container-lastupdated-grid">
+            <a class="a-celebrity-lastupdated-grid"> 
+                {{celebrity.lastUpdatedMessage}}
+            </a>
+        </div>
     </div>
-    <!-- lastUpdated -->
-    <div class="div-celebrity-container-lastupdated">
-        <a class="a-celebrity-lastupdated"> 
-            {{celebrity.lastUpdatedMessage}}
-        </a>
-    </div>
-    <!-- score -->
-    <app-score [rectangleHeight]="rectangleHeight" [celebrity]="celebrity"></app-score>
-    <!-- vote -->
-    <app-vote [celebrity]="celebrity"></app-vote>
-    <!-- banner__background -->
-    <div class="div-rectangle" [ngStyle]="{'height':getHeightRectangle()}"></div>
 </div>
