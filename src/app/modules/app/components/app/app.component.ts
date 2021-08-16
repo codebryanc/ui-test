@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CelebrityService } from 'src/app/services/celebrity.service';
+import { UiLocalStorageService } from 'src/app/services/uiLocal-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { CelebrityService } from 'src/app/services/celebrity.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private _celebrityService: CelebrityService) {
+  constructor(private _celebrityService: CelebrityService,
+    private _uiTestLocalStorageService: UiLocalStorageService) {
   }
 
   ngOnInit() {
