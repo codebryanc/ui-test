@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { ICelebrityMap } from 'src/app/models/celebrityInterface';
+import { ToolsService } from 'src/app/services/tools.service';
 
 @Component({
   selector: 'app-card',
@@ -12,9 +13,17 @@ export class CardComponent implements OnInit {
   // Component data
   @Input() celebrity: ICelebrityMap;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private _toolsService: ToolsService) {
   }
 
+  ngOnInit(): void {
+    this.setTheCorrectlyUpdateMessage();
+  }
+
+  // Methods
+  setTheCorrectlyUpdateMessage() : void {
+    if(this.celebrity) {
+      this.celebrity.lastUpdatedMessage = this._toolsService.getDateMessageForEyebrowText(this.celebrity.lastUpdated);
+    }
+  }
 }
