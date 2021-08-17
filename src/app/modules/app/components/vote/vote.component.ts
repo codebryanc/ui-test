@@ -23,6 +23,11 @@ export class VoteComponent implements OnInit {
 
   // Component data
   @Input() celebrity: ICelebrityMap;
+  @Input() currentView: string;
+
+  // Component view options
+  public cardListView: string = 'List';
+  public cardGridView: string = 'Grid';
 
   public actionText: string = ACTION_TEXT_START;
   public action: string = '';

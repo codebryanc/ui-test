@@ -24,7 +24,7 @@
         <!-- score -->
         <app-score [rectangleHeight]="rectangleHeight" [celebrity]="celebrity" [currentView]="currentView"></app-score>
         <!-- vote -->
-        <app-vote [celebrity]="celebrity"></app-vote>
+        <app-vote [celebrity]="celebrity" [currentView]="currentView"></app-vote>
         <!-- banner__background -->
         <div class="div-rectangle" [ngStyle]="{'height':getHeightRectangle()}"></div>
     </div>
@@ -54,5 +54,7 @@
         </div>
         <!-- score -->
         <app-score [rectangleHeight]="gridHeight" [celebrity]="celebrity" [currentView]="currentView"></app-score>
+        <!-- vote -->
+        <app-vote [celebrity]="celebrity" [currentView]="currentView"></app-vote>
     </div>
 </div>

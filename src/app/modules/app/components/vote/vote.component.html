@@ -1,4 +1,5 @@
-<div>
+<!-- card view -->
+<div *ngIf="currentView === cardListView">
     <!-- vote up -->
     <button
         *ngIf="isButtonEnabled"
@@ -25,6 +26,38 @@
             (click)="choseVoteOption()">
         <!-- action text -->
         <a class="a-vote-now">
+            {{actionText}}
+        </a>
+    </button>
+</div>
+<!-- grid view -->
+<div *ngIf="currentView === cardGridView">
+    <!-- vote up -->
+    <button 
+        *ngIf="isButtonEnabled"
+        class="hand btn-vote-up-grid"
+        (click)="setAction(true)"
+        [ngClass]="action == 'thumbsUp' ? 'btn-vote-active-grid': ''">
+        <!-- image up -->
+        <img class="img-thumbs-up-grid"
+             src="../../../../../assets/img/thumbs-up.svg">
+    </button>
+    <!-- vote down -->
+    <button *ngIf="isButtonEnabled"
+        class="hand btn-vote-down-grid"
+        (click)="setAction(false)"
+        [ngClass]="action == 'thumbsDown' ? 'btn-vote-active-grid': ''">
+        <!-- image down -->
+        <img class="img-thumbs-down-grid"
+            src="../../../../../assets/img/thumbs-down.svg">
+    </button>
+    <!-- vote now -->
+    <button class="btn-vote-now-grid"
+            [disabled]="!isActionEnable()"
+            [ngClass]="isActionEnable() ? (actionText === 'Vote Again' ? 'btn-vote-now-active-grid hand btn-vote-again-grid': 'btn-vote-now-active-grid hand') : ''"
+            (click)="choseVoteOption()">
+        <!-- action text -->
+        <a class="a-vote-now-grid">
             {{actionText}}
         </a>
     </button>
