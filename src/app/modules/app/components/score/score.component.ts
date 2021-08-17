@@ -1,9 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { ICelebrityMap } from 'src/app/models/celebrityInterface';
-import { CelebrityService } from 'src/app/services/celebrity.service';
+import { environment } from 'src/environments/environment';
 
+import { ICelebrityMap } from 'src/app/models/celebrityInterface';
+
+import { CelebrityService } from 'src/app/services/celebrity.service';
 import { ToolsService } from 'src/app/services/tools.service';
+import { MenuService } from 'src/app/services/menu.service';
 
 const TOTAL_VOTES_DONT_SHOW_CHANGES: number = 500;
 
@@ -14,6 +17,10 @@ const TOTAL_VOTES_DONT_SHOW_CHANGES: number = 500;
 })
 export class ScoreComponent implements OnInit {
 
+  // Component view options
+  public cardListView: string = 'List';
+  public cardGridView: string = 'Grid';
+  
   // Component data
   @Input() celebrity: ICelebrityMap;
   @Input() rectangleHeight: number;
@@ -24,8 +31,12 @@ export class ScoreComponent implements OnInit {
   public scoreUp: string;
   public scoreDown: string;
 
+  // Business logic =>  Always initi in List view
+  public currentView: string = environment.initView;
+  
   constructor(private _toolsService: ToolsService,
-    private _celebrityService: CelebrityService) {}
+    private _celebrityService: CelebrityService,
+    private _menuService: MenuService) {}
 
   ngOnInit(): void {
     this.initCompoent();
@@ -37,6 +48,9 @@ export class ScoreComponent implements OnInit {
 
     // subscribe to changes
     this.refreshScoreSubscribe();
+
+    // subscribe to changes in view
+    this.refreshViewSubsCribe();
   }
     
   evaluateScoreForThisCelebrity() : void {
@@ -89,6 +103,15 @@ export class ScoreComponent implements OnInit {
       if(this.celebrity.id === id) {
         this.celebrity = this._celebrityService.getCelebrityById(this.celebrity.id);
         this.evaluateScoreForThisCelebrity();
+      }
+    });
+  }
+
+  refreshViewSubsCribe() {
+    // View has changed!
+    this._menuService.changeMenuView.subscribe(view => {
+      if(view) {
+        this.currentView = view;
       }
     });
   }

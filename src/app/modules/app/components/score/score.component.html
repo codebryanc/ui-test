@@ -1,16 +1,40 @@
-<div class="div-score-container display-flex">
-    <!-- main score -->
-    <div class="main-score" [ngClass]="isUpScore ? 'color-up': 'color-down'">
-        <img class="img-thumbs" src="../../../../../assets/img/{{isUpScore ? 'thumbs-up': 'thumbs-down' }}.svg">
+<!-- card -->
+<div *ngIf="currentView === cardListView">
+    <div class="div-score-container display-flex">
+        <!-- main score -->
+        <div class="main-score" [ngClass]="isUpScore ? 'color-up': 'color-down'">
+            <img class="img-thumbs" src="../../../../../assets/img/{{isUpScore ? 'thumbs-up': 'thumbs-down' }}.svg">
+        </div>
+        <!-- up -->
+        <div class="div-score div-score-up" [ngStyle]="{'width':getSizeArea(false)}">
+            <img class="img-thumbs-up" src="../../../../../assets/img/thumbs-up.svg">
+            <a class="a-percent-up float-left">{{scoreUp}}%</a>
+        </div>
+        <!-- down -->
+        <div class="div-score div-score-down" [ngStyle]="{'width':getSizeArea(true)}">
+            <img class="img-thumbs-down" src="../../../../../assets/img/thumbs-down.svg">
+            <a class="a-percent-down float-right">{{scoreDown}}%</a>
+        </div>
     </div>
-    <!-- up -->
-    <div class="div-score div-score-up" [ngStyle]="{'width':getSizeArea(false)}">
-        <img class="img-thumbs-up" src="../../../../../assets/img/thumbs-up.svg">
-        <a class="a-percent-up float-left">{{scoreUp}}%</a>
-    </div>
-    <!-- down -->
-    <div class="div-score div-score-down" [ngStyle]="{'width':getSizeArea(true)}">
-        <img class="img-thumbs-down" src="../../../../../assets/img/thumbs-down.svg">
-        <a class="a-percent-down float-right">{{scoreDown}}%</a>
+</div>
+<!-- grid -->
+<div *ngIf="currentView === cardGridView">
+    <div class="div-score-container display-flex">
+        <!-- main score -->
+        <div class="main-score-grid" [ngClass]="isUpScore ? 'color-up': 'color-down'">
+            <img class="img-thumbs-grid" src="../../../../../assets/img/{{isUpScore ? 'thumbs-up': 'thumbs-down' }}.svg">
+        </div>
+        <!-- up -->
+        <div class="div-content-bar-grid">
+            <div class="div-score-grid div-score-up-grid" [ngStyle]="{'width':getSizeArea(false)}">
+                <img class="img-thumbs-up-grid" src="../../../../../assets/img/thumbs-up.svg">
+                <a class="a-percent-up-grid float-left">{{scoreUp}}%</a>
+            </div>
+            <!-- down -->
+            <div class="div-score-grid div-score-down-grid" [ngStyle]="{'width':getSizeArea(true)}">
+                <img class="img-thumbs-down-grid" src="../../../../../assets/img/thumbs-down.svg">
+                <a class="a-percent-down-grid float-right">{{scoreDown}}%</a>
+            </div>
+        </div>
     </div>
 </div>

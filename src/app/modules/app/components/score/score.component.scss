@@ -14,8 +14,7 @@
 
 .div-score-up {
     height: 54px;
-    background: #3CBBB499;
-    
+    background: #3CBBB499;    
 }
 
 .div-score-down {
@@ -58,4 +57,67 @@
     width: 24px;
     margin: 16px 18px 0 0;
     right: 0;
+}
+
+// For GRID
+.main-score-grid {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 0;
+    top: -398px;
+}
+
+.img-thumbs-grid {
+    height: 16px;
+    width: 16px;
+    margin: 7px;
+}
+
+.img-thumbs-up-grid {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    margin: 10px 0 0 12px;
+}
+
+.img-thumbs-down-grid {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    margin: 16px 18px 0 0;
+    right: 0;
+}
+
+.div-score-grid {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    top: -217px;
+}
+
+.div-score-up-grid {
+    height: 36px;
+    background: #3CBBB499;    
+}
+
+.div-score-down-grid {
+    height: 36px;
+    background: #F9AD1D99;    
+}
+
+.a-percent-up-grid {
+    margin: 3px 0 0 36px;
+}
+
+.a-percent-down-grid {
+    margin: 3px 36px 0 0;
+}
+
+.div-content-bar-grid {
+    display: flex;
+    position: absolute;
+    top: -217px;
 }

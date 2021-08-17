@@ -22,6 +22,7 @@ export class CardComponent implements OnInit {
   public cardGridView: string = 'Grid';
 
   public rectangleHeight: number = 1100;
+  public gridHeight: number = 348;
 
   // Component data
   @Input() celebrity: ICelebrityMap;
@@ -31,7 +32,6 @@ export class CardComponent implements OnInit {
 
   constructor(private _toolsService: ToolsService,
     private _menuService: MenuService) {
-    console.log(this.currentView);
   }
 
   ngOnInit(): void {
