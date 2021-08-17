@@ -24,19 +24,19 @@ export class ScoreComponent implements OnInit {
   // Component data
   @Input() celebrity: ICelebrityMap;
   @Input() rectangleHeight: number;
+  @Input() currentView: string;
 
   private _totalVotes: number = 0;
 
   public isUpScore: boolean = true;
   public scoreUp: string;
   public scoreDown: string;
-
-  // Business logic =>  Always initi in List view
-  public currentView: string = environment.initView;
   
   constructor(private _toolsService: ToolsService,
     private _celebrityService: CelebrityService,
-    private _menuService: MenuService) {}
+    private _menuService: MenuService) {
+      this.currentView = environment.initView;
+    }
 
   ngOnInit(): void {
     this.initCompoent();
@@ -48,9 +48,6 @@ export class ScoreComponent implements OnInit {
 
     // subscribe to changes
     this.refreshScoreSubscribe();
-
-    // subscribe to changes in view
-    this.refreshViewSubsCribe();
   }
     
   evaluateScoreForThisCelebrity() : void {
@@ -103,15 +100,6 @@ export class ScoreComponent implements OnInit {
       if(this.celebrity.id === id) {
         this.celebrity = this._celebrityService.getCelebrityById(this.celebrity.id);
         this.evaluateScoreForThisCelebrity();
-      }
-    });
-  }
-
-  refreshViewSubsCribe() {
-    // View has changed!
-    this._menuService.changeMenuView.subscribe(view => {
-      if(view) {
-        this.currentView = view;
       }
     });
   }
